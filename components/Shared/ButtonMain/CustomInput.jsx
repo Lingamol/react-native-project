@@ -11,7 +11,7 @@ import { colors, radius } from "../../../utils/variables";
 const initialStateSecureEntry = { isShow: true, title: "Показати" };
 
 export default function CustomInput(props) {
-  const { type } = props;
+  const { type, onChange } = props;
   const initialState = { isValid: true, error: "" };
   const [error, setError] = useState(initialState);
   const [rules, setRules] = useState((props.rules = []));
@@ -46,6 +46,9 @@ export default function CustomInput(props) {
           selectionColor={colors.inputBorderColor}
           cursorColor={colors.mainTextColor}
           secureTextEntry={type === "password" ? secureEntry.isShow : false}
+          onChangeText={(value) => {
+            console.log("input value", value), onChange(value);
+          }}
           onFocus={() => {
             setInFocus(true);
           }}
@@ -73,14 +76,18 @@ const styles = StyleSheet.create({
   container: {
     // flexDirection: "column",
     // alignItems: "centere",
-    // height: 50,
+
     // position: "relative",
+
     width: "100%",
   },
   label: {},
   input: {
     width: "100%",
     position: "relative",
+    // position: "absolute",
+    // top: 0,
+    // left: 0,
     height: 50,
     // outline: "none",
     /* border: none; */
@@ -136,7 +143,7 @@ const styles = StyleSheet.create({
     // lineHeight: 19,
     paddingVertical: 16,
     // paddingHorizontal: 32,
-    color: colors.passwordShowBtnTextColor,
+    color: colors.secondaryTextColor,
   },
   inputPassword: { paddingRight: 90 },
 });

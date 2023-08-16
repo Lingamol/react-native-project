@@ -1,8 +1,11 @@
-import { View, StyleSheet, Keyboard } from "react-native";
+import { View, StyleSheet, Text, KeyboardAvoidingView } from "react-native";
 import { useState, useEffect } from "react";
 import CustomInput from "../../Shared/ButtonMain/CustomInput";
 import ButtonMain from "../../Shared/ButtonMain/ButtonMain";
+import AvatarInput from "../AvatarInput/AvatarInput";
 import useKeyboard from "../../../Hooks/UseKeybord";
+import { colors, radius, fonts } from "../../../utils/variables";
+import AuthLink from "../AuthLink/AuthLink";
 const inputProps = {
   textContentType: "",
   value: "",
@@ -28,66 +31,141 @@ const inputProps = {
   // phone-pad
   // url
 };
-const initialState = {
+const registrationInitialState = {
   login: "",
   email: "",
   password: "",
 };
-const initialStateHighlighted = {
-  login: "false",
-  email: "false",
-  password: "false",
+const loginInitialState = {
+  email: "",
+  password: "",
 };
 
 export default function MyRegisterForm(props) {
   const { type } = props;
-  const [formState, setFormState] = useState(initialState);
-  const [isHighlighted, setIsHighlighted] = useState(initialStateHighlighted);
+  const isKeybordShowed = useKeyboard();
+  isRegistration = type === "registration" ? true : false;
+  const [formState, setFormState] = useState(
+    isRegistration ? registrationInitialState : loginInitialState
+  );
+  registrationAndKeybord = isKeyboardShowed && isRegistration ? true : false;
+  loginAndKeybord = isKeyboardShowed && !isRegistration ? true : false;
+
   const isKeyboardShowed = useKeyboard();
-  // const [keyboardShowStatus, setKeyboardShowStatus] = useState(false);
-
-  // useEffect(() => {
-  //   const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
-  //     setKeyboardShowStatus(true);
-  //     console.log("Keybord", keyboardShowStatus);
-  //   });
-  //   const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
-  //     setKeyboardShowStatus(false);
-  //   });
-
-  //   return () => {
-  //     showSubscription.remove();
-  //     hideSubscription.remove();
-  //   };
-  // }, []);
-
+  const onRegister = () => {
+    alert(
+      `Register Credentials  Login:${formState.login}, Email:${formState.email} Password:${formState.password}`
+    );
+    // setFormState(registrationInitialState);
+  };
+  const onLogin = () => {
+    alert(
+      `Login Credentials Email:${formState.email}, Password:${formState.password}`
+    );
+    // setFormState(loginInitialState);
+  };
+  function onChangeLogin(value) {
+    setFormState((prev) => ({ ...prev, login: value }));
+  }
+  function onChangeEmail(value) {
+    setFormState((prev) => ({ ...prev, email: value }));
+  }
+  function onChangePassword(value) {
+    setFormState((prev) => ({ ...prev, password: value }));
+  }
+  console.log("state", formState);
   return (
+    // <View
+    //   style={[
+    //     styles.container,
+    //     type === "registration"
+    //       ? isKeyboardShowed
+    //         ? styles.keyboardReg
+    //         : styles.registration
+    //       : isKeyboardShowed
+    //       ? styles.keyboardLog
+    //       : styles.login,
+    //   ]}
+    // >
+    //   <Text style={styles.title}>
+    //     {isRegistration ? "Реєстрація" : " Вхід"}
+    //   </Text>
     <View style={styles.form}>
-      {type === "registration" && (
+      {isRegistration && <AvatarInput />}
+      {isRegistration && (
         <View style={styles.login}>
           <CustomInput
             placeholder={"Логін"}
-            // isHighlighted={isHighlighted.login}
+            value={formState.login}
+            onChange={onChangeLogin}
           />
         </View>
       )}
       <View style={styles.email}>
-        <CustomInput placeholder={"Адреса електронної пошти"} />
+        <CustomInput
+          placeholder={"Адреса електронної пошти"}
+          autoComplete="email"
+          onChange={onChangeEmail}
+        />
       </View>
-      <View style={styles.password}>
-        <CustomInput placeholder={"Пароль"} type={"password"} />
+      <View
+        style={[
+          ,
+          isRegistration ? styles.password : { marginBottom: 43 },
+          isKeyboardShowed ? { marginBottom: 0 } : null,
+        ]}
+      >
+        <CustomInput
+          placeholder={"Пароль"}
+          type={"password"}
+          autoComplete="password"
+          onChange={onChangePassword}
+        />
       </View>
       <View>
         <ButtonMain
-          title={"Зареєстуватися"}
+          title={isRegistration ? "Зареєстуватися" : "Увійти"}
           style={isKeyboardShowed ? styles.displayNone : null}
+          activeOpacity={0.7}
+          onPress={isRegistration ? onRegister : onLogin}
         />
       </View>
     </View>
+    // {!isKeybordShowed && <AuthLink type={"registration"} />}
+    // </View>
   );
 }
 const styles = StyleSheet.create({
-  form: { width: "100%", paddingHorizontal: 16, flex: 1 },
+  container: {
+    width: "100%",
+    borderWidth: 2,
+    position: "relative",
+    // flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "flex-start",
+
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    backgroundColor: colors.mainBgColor,
+  },
+
+  title: {
+    fontFamily: fonts.mainRegularFont,
+    color: colors.mainTextColor,
+    textAlign: "center",
+    fontSize: 30,
+    marginBottom: 32,
+  },
+  login: { maxHeight: 490, paddingTop: 32, paddingBottom: 111 },
+  registration: {
+    maxHeight: 550,
+    paddingTop: 92,
+    paddingBottom: 45,
+  },
+  keyboardReg: { maxHeight: 374, paddingBottom: 32, paddingTop: 92 },
+  keyboardLog: { maxHeight: 248, paddingBottom: 32, paddingTop: 32 },
+  form: { width: "100%", paddingHorizontal: 16 },
   login: { marginBottom: 16 },
   email: { marginBottom: 16 },
   password: { marginBottom: 60 },

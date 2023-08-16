@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, KeyboardAvoidingView } from "react-native";
-import { colors, fonts } from "../../../utils/variables";
-import AvatarInput from "../../Form/AvatarInput/AvatarInput";
-import useKeyboard from "../../../Hooks/UseKeybord";
+import { colors, fonts } from "../utils/variables";
+
+import useKeyboard from "../Hooks/UseKeybord";
 
 export default function FormContainer({ children, ...props }) {
   const { type, title } = props;
@@ -32,11 +32,11 @@ export default function FormContainer({ children, ...props }) {
 }
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    // width: "100%",
     // borderWidth: 2,
     position: "relative",
 
-    flexDirection: "column",
+    // flexDirection: "column",
     alignItems: "center",
     justifyContent: "flex-start",
 
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginBottom: 32,
   },
-  login: { maxHeight: 490, paddingTop: 32, paddingBottom: 111 },
+  login: { maxHeight: 456, paddingTop: 32, paddingBottom: 111 },
   registration: {
-    maxHeight: 550,
+    maxHeight: 516,
     paddingTop: 92,
     paddingBottom: 45,
   },

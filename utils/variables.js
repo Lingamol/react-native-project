@@ -7,11 +7,11 @@ const colors = {
   inputBgColor: "#F6F6F6",
   inputBorderColor: "#E8E8E8",
   placeHolderColor: "#BDBDBD",
-  passwordShowBtnTextColor: "#1B4371",
+  secondaryTextColor: "#1B4371",
 };
 const fonts = {
   mainRegularFont: "Roboto-Regular",
   mainBoldFont: "Roboto-Bold",
 };
-const radius = { mainBtn: 100, input: 10 };
+const radius = { mainBtn: 100, input: 10, form: 25 };
 export { colors, fonts, radius };
