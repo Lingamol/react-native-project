@@ -49,7 +49,11 @@ export default function AvatarInput(props) {
   // }
   return (
     <View style={styles.container}>
-      <Avatar />
+      <Avatar
+        imgUrl={
+          "https://res.cloudinary.com/dwad7k3ud/image/upload/v1692363869/avatar/avatar_a8vxal.jpg"
+        }
+      />
       {/* <AddBtn style={styles.inputIcon} /> */}
       <TouchableOpacity
         style={[delBtn ? styles.buttonDelAvatar : styles.buttonAddAvatar]}

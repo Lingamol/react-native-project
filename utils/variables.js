@@ -8,10 +8,20 @@ const colors = {
   inputBorderColor: "#E8E8E8",
   placeHolderColor: "#BDBDBD",
   secondaryTextColor: "#1B4371",
+  userInfoEmailText: "#212121CC",
+  cameraBtnBg: "#FFFFFF4D",
+  commentBg: "#0000004d",
 };
 const fonts = {
   mainRegularFont: "Roboto-Regular",
   mainBoldFont: "Roboto-Bold",
 };
-const radius = { mainBtn: 100, input: 10, form: 25 };
+const radius = {
+  mainBtn: 100,
+  input: 10,
+  form: 25,
+  avatar: 16,
+  postImage: 8,
+  comment: 6,
+};
 export { colors, fonts, radius };

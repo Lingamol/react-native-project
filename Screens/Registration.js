@@ -5,19 +5,29 @@ import {
   StyleSheet,
   TextInput,
   KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Dimensions,
 } from "react-native";
 import ScreenBg from "../components/ScreenBg";
 import MyRegisterForm from "../components/Form/MyRegisterForm/MyRegisterform";
 import FormContainer from "../components/Form/FormContainer/FormContainer";
 import AuthLink from "../components/Form/AuthLink/AuthLink";
+import { useNavigation } from "@react-navigation/native";
 const Registration = () => {
+  const screenWidth = Dimensions.get("screen").width;
   return (
     <View style={styles.container}>
       <ScreenBg>
-        <FormContainer type={"registration"} title={"Реєстрація"}>
-          <MyRegisterForm type={"registration"} />
-          <AuthLink type={"registration"} />
-        </FormContainer>
+        <TouchableWithoutFeedback
+          onPress={Keyboard.dismiss}
+          style={{ flex: 1, width: screenWidth }}
+        >
+          <FormContainer type={"registration"} title={"Реєстрація"}>
+            <MyRegisterForm type={"registration"} />
+            <AuthLink type={"registration"} />
+          </FormContainer>
+        </TouchableWithoutFeedback>
       </ScreenBg>
     </View>
   );

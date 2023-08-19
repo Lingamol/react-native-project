@@ -1,21 +1,31 @@
 import { View, Image, StyleSheet } from "react-native";
 import { colors } from "../../utils/variables";
-import Photo from "../../assets/img/avatar/avatar.jpeg";
-export default function Avatar(imgUrl = null) {
+import { radius } from "../../utils/variables";
+export default function Avatar(props) {
+  const { imgUrl = null, size = 120, radiusImage = radius.avatar } = props;
   return (
-    <View style={styles.container}>
-      <Image source={Photo} style={styles.photo} />
+    <View
+      style={[
+        styles.container,
+        { height: size, width: size, borderRadius: radiusImage },
+      ]}
+    >
+      {imgUrl && (
+        <Image
+          source={{ uri: `${imgUrl}` }}
+          style={[
+            styles.photo,
+            { height: size, width: size, borderRadius: radiusImage },
+          ]}
+        />
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: 120,
-    width: 120,
-    borderRadius: 16,
     backgroundColor: colors.secondaryBgColor,
   },
-  photo: { height: 120, width: 120, borderRadius: 16 },
+  photo: {},
 });

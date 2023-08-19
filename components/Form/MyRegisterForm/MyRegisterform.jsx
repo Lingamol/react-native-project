@@ -6,6 +6,8 @@ import AvatarInput from "../AvatarInput/AvatarInput";
 import useKeyboard from "../../../Hooks/UseKeybord";
 import { colors, radius, fonts } from "../../../utils/variables";
 import AuthLink from "../AuthLink/AuthLink";
+import { useNavigation } from "@react-navigation/native";
+
 const inputProps = {
   textContentType: "",
   value: "",
@@ -43,6 +45,7 @@ const loginInitialState = {
 
 export default function MyRegisterForm(props) {
   const { type } = props;
+  const navigation = useNavigation();
   const isKeybordShowed = useKeyboard();
   isRegistration = type === "registration" ? true : false;
   const [formState, setFormState] = useState(
@@ -56,12 +59,13 @@ export default function MyRegisterForm(props) {
     alert(
       `Register Credentials  Login:${formState.login}, Email:${formState.email} Password:${formState.password}`
     );
-    // setFormState(registrationInitialState);
+    navigation.navigate("Home");
   };
   const onLogin = () => {
     alert(
       `Login Credentials Email:${formState.email}, Password:${formState.password}`
     );
+    navigation.navigate("Home");
     // setFormState(loginInitialState);
   };
   function onChangeLogin(value) {

@@ -2,14 +2,16 @@ import React from "react";
 import { Text, StyleSheet, Pressable } from "react-native";
 import { colors, radius } from "../../../utils/variables";
 export default function ButtonMain(props) {
-  const { onPress, title = "", style } = props;
+  const { onPress, title = "", style, disabled = false } = props;
   return (
     <Pressable
-      style={[styles.button, style]}
+      style={[styles.button, style, disabled && styles.disabled]}
       activeOpacity={0.7}
       onPress={onPress}
     >
-      <Text style={styles.text}>{title}</Text>
+      <Text style={[styles.text, disabled && styles.textDisabled]}>
+        {title}
+      </Text>
     </Pressable>
   );
 }
@@ -32,4 +34,8 @@ const styles = StyleSheet.create({
     color: colors.textColorWhite,
     // lineHeight: 100,
   },
+  disabled: {
+    backgroundColor: colors.inputBgColor,
+  },
+  textDisabled: { color: colors.placeHolderColor },
 });

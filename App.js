@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -8,7 +8,11 @@ import "react-native-gesture-handler";
 import Home from "./Screens/Home";
 import Login from "./Screens/Login";
 import Registration from "./Screens/Registration";
-
+import PostScreen from "./Screens/PostsScreen";
+import Test from "./Screens/Test";
+import LogOutIcon from "./assets/svg/log-out.svg";
+import CreatePostsScreen from "./Screens/CreatePostsScreen";
+import CommentsScreen from "./Screens/CommentsScreen";
 const loadFonts = async () => {
   return await Font.loadAsync({
     "Montserrat-Bold": require("./assets/fonts/Montserrat/Montserrat-Bold.ttf"),
@@ -53,7 +57,7 @@ export default function App() {
     //   <StatusBar style="auto" />
     // </View>
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName="Home">
+      <MainStack.Navigator initialRouteName="Test">
         <MainStack.Screen
           name="Registration"
           component={Registration}
@@ -70,12 +74,104 @@ export default function App() {
             // },
           }}
         />
+        <MainStack.Screen
+          name="PostScreen"
+          component={PostScreen}
+          options={{
+            headerTitleAlign: "center",
 
+            title: "Публікації",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+              fontSize: 20,
+            },
+            headerRight: () => (
+              <TouchableOpacity
+                style={{ marginRight: 10 }}
+                onPress={() => alert("This is a button!")}
+                // color="#fff"
+              >
+                <LogOutIcon />
+              </TouchableOpacity>
+            ),
+          }}
+        />
         <MainStack.Screen
           name="Home"
           component={Home}
           options={{
             title: "Home screen",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+              fontSize: 20,
+            },
+            headerRight: () => (
+              <Button
+                onPress={() => alert("This is a button!")}
+                title="Press me"
+                // color="#fff"
+              />
+            ),
+          }}
+        />
+
+        <MainStack.Screen
+          name="Test"
+          component={Test}
+          options={{
+            title: "Test screen",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+              fontSize: 20,
+            },
+            headerRight: () => (
+              <Button
+                onPress={() => alert("This is a button!")}
+                title="Press me"
+                // color="#fff"
+              />
+            ),
+          }}
+        />
+        <MainStack.Screen
+          name="AddPost"
+          component={CreatePostsScreen}
+          options={{
+            title: "New Post",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+              fontSize: 20,
+            },
+            headerRight: () => (
+              <Button
+                onPress={() => alert("This is a button!")}
+                title="Press me"
+                // color="#fff"
+              />
+            ),
+          }}
+        />
+        <MainStack.Screen
+          name="Comments"
+          component={CommentsScreen}
+          options={{
+            title: "Comments",
             headerStyle: {
               backgroundColor: "#f4511e",
             },
