@@ -34,6 +34,9 @@ function Settings() {
         <TouchableOpacity onPress={() => navigation.navigate("Comments")}>
           <Text>CommentsScreen</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("ProfileScreen")}>
+          <Text>ProfileScreen</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

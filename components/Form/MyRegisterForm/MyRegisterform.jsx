@@ -95,7 +95,7 @@ export default function MyRegisterForm(props) {
     //     {isRegistration ? "Реєстрація" : " Вхід"}
     //   </Text>
     <View style={styles.form}>
-      {isRegistration && <AvatarInput />}
+      {/* {isRegistration && <AvatarInput />} */}
       {isRegistration && (
         <View style={styles.login}>
           <CustomInput

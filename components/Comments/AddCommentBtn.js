@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, Pressable } from "react-native";
-import { colors, radius } from "../../../utils/variables";
-export default function ButtonMain({ children, ...props }) {
+import { colors, radius } from "../../utils/variables";
+export default function AddCommentBtn({ children, ...props }) {
   const {
     onPress,
     title = "",
@@ -34,9 +34,11 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 16,
-    paddingHorizontal: 32,
+    // paddingVertical: 16,
+    // paddingHorizontal: 32,
     // borderRadius: radius.mainBtn,
+    width: 34,
+    height: 34,
     elevation: 3,
     backgroundColor: colors.accentColor,
   },

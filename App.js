@@ -13,6 +13,8 @@ import Test from "./Screens/Test";
 import LogOutIcon from "./assets/svg/log-out.svg";
 import CreatePostsScreen from "./Screens/CreatePostsScreen";
 import CommentsScreen from "./Screens/CommentsScreen";
+
+import ProfileScreen from "./Screens/ProfileScreen";
 const loadFonts = async () => {
   return await Font.loadAsync({
     "Montserrat-Bold": require("./assets/fonts/Montserrat/Montserrat-Bold.ttf"),
@@ -172,6 +174,29 @@ export default function App() {
           component={CommentsScreen}
           options={{
             title: "Comments",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+              fontSize: 20,
+            },
+            headerRight: () => (
+              <Button
+                onPress={() => alert("This is a button!")}
+                title="Press me"
+                // color="#fff"
+              />
+            ),
+          }}
+        />
+        <MainStack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{
+            headerShown: false,
+            title: "Profile",
             headerStyle: {
               backgroundColor: "#f4511e",
             },

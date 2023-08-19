@@ -12,37 +12,14 @@ import ToolbarBtn from "../components/ToolbarBtn/ToolbarBtn";
 import { colors } from "../utils/variables";
 import UserInfo from "../components/UserInfo/UserInfo";
 import PostItem from "../components/Posts/PostItem";
-
-const posts = [
-  {
-    id: 1,
-    imgUrl:
-      "https://res.cloudinary.com/dwad7k3ud/image/upload/v1692381429/postImages/Rectangle_23_khco9w.jpg",
-    title: "Ліс",
-    location: "Ivano-Frankivs'k Region, Ukraine",
-    amountComments: 5,
-  },
-  {
-    id: 2,
-    imgUrl:
-      "https://res.cloudinary.com/dwad7k3ud/image/upload/v1692381429/postImages/Rectangle_23_khco9w.jpg",
-    title: "Ліс",
-    location: "Ivano-Frankivs'k Region, Ukraine",
-    amountComments: 5,
-  },
-  {
-    id: 3,
-    imgUrl:
-      "https://res.cloudinary.com/dwad7k3ud/image/upload/v1692381429/postImages/Rectangle_23_khco9w.jpg",
-    title: "Ліс",
-    location: "Ivano-Frankivs'k Region, Ukraine",
-    amountComments: 5,
-  },
-];
-
+import { posts } from "../mokaData/posts";
+import ProfileScreen from "./ProfileScreen";
+import { useNavigation } from "@react-navigation/native";
 export default function PostScreen() {
   const screenWidth = Dimensions.get("screen").width;
   function User() {
+    // const navigation = useNavigation();
+    // navigation.navigate("ProfileScreen");
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>User!</Text>
@@ -86,7 +63,7 @@ export default function PostScreen() {
         <View style={styles.galleryContainer}>
           <FlatList
             data={posts}
-            renderItem={({ item }) => <PostItem post={item} />}
+            renderItem={({ item }) => <PostItem post={item} profile={false} />}
             keyExtractor={(item) => item.id}
           />
         </View>
@@ -108,7 +85,7 @@ export default function PostScreen() {
             // return <Ionicons name={iconName} size={size} color={color} />;
             return (
               <ToolbarBtn>
-                <Text
+                {/* <Text
                   style={{
                     color: colors.mainBgColor,
                     fontSize: 30,
@@ -116,7 +93,8 @@ export default function PostScreen() {
                   }}
                 >
                   +
-                </Text>
+                </Text> */}
+                <AntDesign name="plus" size={24} color="#fff" />
               </ToolbarBtn>
             );
           } else if (route.name === "User") {
@@ -142,7 +120,7 @@ export default function PostScreen() {
 }
 const styles = StyleSheet.create({
   galleryContainer: {
-    backgroundColor: "red",
+    backgroundColor: colors.mainBgColor,
     flexGrow: 1,
     alignItems: "center",
   },

@@ -23,7 +23,11 @@ const Registration = () => {
           onPress={Keyboard.dismiss}
           style={{ flex: 1, width: screenWidth }}
         >
-          <FormContainer type={"registration"} title={"Реєстрація"}>
+          <FormContainer
+            type={"registration"}
+            title={"Реєстрація"}
+            imgUrl="https://res.cloudinary.com/dwad7k3ud/image/upload/v1692363869/avatar/avatar_a8vxal.jpg"
+          >
             <MyRegisterForm type={"registration"} />
             <AuthLink type={"registration"} />
           </FormContainer>

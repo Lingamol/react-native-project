@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import PostPhoto from "../components/Posts/PostPhoto";
 import CommentsItem from "../components/Comments/CommentItem";
+import CommentsAddForm from "../components/Comments/CommentsAddForm";
 const comments = [
   {
     id: 1,
@@ -53,6 +54,7 @@ export default function CommentsScreen() {
           />
         ))}
       </ScrollView>
+      <CommentsAddForm />
     </View>
   );
 }

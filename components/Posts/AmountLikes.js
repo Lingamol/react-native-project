@@ -1,13 +1,13 @@
 import { View, StyleSheet, Text } from "react-native";
 import { colors } from "../../utils/variables";
-import MessageIcon from "../../assets/svg/message-circle.svg";
-export default function AmoutComments(props) {
-  const { amountComments } = props;
+import LikeIcon from "../../assets/svg/thumbs-up.svg";
+export default function AmoutLikes(props) {
+  const { amountLikes } = props;
 
   return (
     <View style={styles.container}>
-      <MessageIcon style={[styles.icon, amountComments && styles.activeIcon]} />
-      <Text style={styles.text}>{amountComments}</Text>
+      <LikeIcon style={[styles.icon, amountLikes && styles.activeIcon]} />
+      <Text style={styles.text}>{amountLikes}</Text>
     </View>
   );
 }

@@ -5,7 +5,7 @@ import { colors } from "../../../utils/variables";
 import AddBtn from "../../../assets/svg/add.svg";
 
 export default function AvatarInput(props) {
-  const { delBtn } = props;
+  const { delBtn, imgUrl } = props;
   const onAddAvatar = () => {
     alert("addAvatar");
   };
@@ -49,11 +49,7 @@ export default function AvatarInput(props) {
   // }
   return (
     <View style={styles.container}>
-      <Avatar
-        imgUrl={
-          "https://res.cloudinary.com/dwad7k3ud/image/upload/v1692363869/avatar/avatar_a8vxal.jpg"
-        }
-      />
+      <Avatar imgUrl={imgUrl} />
       {/* <AddBtn style={styles.inputIcon} /> */}
       <TouchableOpacity
         style={[delBtn ? styles.buttonDelAvatar : styles.buttonAddAvatar]}
@@ -72,11 +68,11 @@ const styles = StyleSheet.create({
     width: 120,
     borderRadius: 16,
     backgroundColor: colors.secondaryBgColor,
-    position: "absolute",
-    top: -230,
-    left: "50%",
-    // transform: [{ translateX: -50 }, { translateY: -50 }],
-    transform: [{ translateX: -50 }],
+    // position: "absolute",
+    // top: -230,
+    // left: "50%",
+    // // transform: [{ translateX: -50 }, { translateY: -50 }],
+    // transform: [{ translateX: -50 }],
 
     zIndex: 1,
   },

@@ -5,7 +5,7 @@ import AvatarInput from "../../Form/AvatarInput/AvatarInput";
 import useKeyboard from "../../../Hooks/UseKeybord";
 
 export default function FormContainer({ children, ...props }) {
-  const { type, title } = props;
+  const { type, title, imgUrl } = props;
   isKeyboardShowed = useKeyboard();
 
   registrationAndKeybord =
@@ -25,7 +25,11 @@ export default function FormContainer({ children, ...props }) {
       ]}
     >
       <Text style={styles.title}>{title}</Text>
-      {/* {type === "registration" && <AvatarInput />} */}
+      {type === "registration" && (
+        <View style={styles.avatarPosition}>
+          <AvatarInput imgUrl={imgUrl} />
+        </View>
+      )}
       {children}
     </View>
   );
@@ -44,7 +48,13 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 25,
     backgroundColor: colors.mainBgColor,
   },
-
+  avatarPosition: {
+    position: "absolute", // position: "absolute",
+    top: -60,
+    left: "50%",
+    // transform: [{ translateX: -50 }, { translateY: -50 }],
+    transform: [{ translateX: -50 }],
+  },
   title: {
     fontFamily: fonts.mainRegularFont,
     color: colors.mainTextColor,
